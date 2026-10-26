@@ -1,0 +1,71 @@
+TOPIC TITLE
+USA 5G Mobile Proxies | AT&T, T-Mobile, Verizon | 10 Cities | From $4/day | Free 1-Hour Test
+
+TAGS
+mobile proxies, USA proxy, US mobile proxy, 5G proxy, 4G proxy, SOCKS5 proxy, unlimited proxy, AT&T proxy, T-Mobile proxy, Verizon proxy
+
+TOPIC TEXT (BB codes)
+[center][img]https://bmusproxy.com/wp-content/uploads/2026/09/usa-map-10-states.webp[/img][/center]
+
+[center][size=6][b]US mobile proxies on real phones[/b][/size]
+[size=5][b]AT&T · T-Mobile · Verizon · 10 cities[/b][/size]
+
+[size=6][color=#c62828][b]$4 a day · $23 a week[/b][/color][/size]
+$85 a month. The first hour is free.[/center]
+
+Hi! We are BM USA Proxy. Your IPs come from real Android phones on the AT&T, T-Mobile and Verizon networks. Each phone serves one client only, so the address is never shared.
+
+[b]Where the phones are[/b]
+[list]
+[*]Seattle, WA
+[*]Portland, OR
+[*]Los Angeles, CA
+[*]Las Vegas, NV
+[*]Phoenix, AZ
+[*]Denver, CO
+[*]Dallas, TX
+[*]Chicago, IL
+[*]New York, NY
+[*]Miami, FL
+[/list]
+You pick the city and carrier when you order, from what is free at the moment.
+
+[b]What you get[/b]
+[list]
+[*]Your own port and unlimited traffic, no per-GB billing
+[*]HTTP and SOCKS5, with UDP over SOCKS5
+[*]OpenVPN and WireGuard configs if you want to route a whole phone or computer
+[*]IP change by link (about 10 seconds) or on a timer. We suggest changing it no more than once a minute
+[*]Phone reboot by link if the connection gets stuck
+[*]Speed is usually 10-70 Mbps, about 30 on average, depending on the tower and time of day
+[/list]
+
+[b]What people use it for[/b]
+Traffic arbitrage, social media account management and SMM, web scraping, checking US search results and ads, automation in ZennoPoster, BAS and antidetect browsers. Setup guides for Dolphin Anty, AdsPower and GoLogin are on our website.
+
+[b]Prices[/b]
+[list]
+[*]Day: $4
+[*]Week: $23
+[*]Month: $85
+[/list]
+[b]Bulk[/b] (per port per month): 2+ ports $80, 5+ $75, 10+ $70, 20+ $65, 50+ $60, 100+ $55.
+[b]Resellers[/b]: $60 per port for 1-100 ports, $55 for 100+. Details in support.
+
+[b]How to start[/b]
+1. Open the bot [url=https://t.me/bmproxy_bot]@bmproxy_bot[/url] and tap Open App.
+2. Take the free hour: choose a city and carrier.
+3. Copy your connection details into your software.
+If it works for you, renew right there in the bot.
+
+You can check that an address is really mobile for free at [url=https://check.bmusproxy.com]check.bmusproxy.com[/url]: it shows whose network it is, a mobile carrier, a home ISP or a data center.
+
+[b]Payment:[/b] USDT, USDC, BTC, ETH, card, PayPal.
+
+[b]Not for[/b] banks and financial services, .gov and .edu sites, or spam.
+
+[b]Contacts[/b]
+Free hour and purchase: bot [url=https://t.me/bmproxy_bot]@bmproxy_bot[/url]
+Questions, bulk and reselling: support [url=https://t.me/usproxy_support]@usproxy_support[/url]
+News: channel [url=https://t.me/usproxyclub]@usproxyclub[/url]
+Website: [url=https://bmusproxy.com/?utm_source=forums&utm_medium=post&utm_campaign=forum100]bmusproxy.com[/url]
