@@ -48,7 +48,9 @@ body.ph .hero.tall{aspect-ratio:9/16;display:flex;flex-direction:column;justify-
 body.ph .hero.tall video{position:absolute;inset:0}
 body.ph .tag{font-size:11px}
 footer{color:#466D8E;font-size:15px}
-@media (prefers-reduced-motion:reduce){.hero video{display:none}}
+.play{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;border:0;background:rgba(214,56,60,.92);color:#fff;font-size:26px;line-height:64px;text-align:center;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.hero.playing .play{display:none}
+.links a{color:#195079;font-weight:700}
 </style></head><body>
 <div class="w">
 <header>
@@ -61,7 +63,7 @@ footer{color:#466D8E;font-size:15px}
     <div class="cap"><span class="num">Вариант 1</span><h2>Цена крупно</h2><p>Быстрый ролик 8 с: «$4/day», затем три тарифа $4 / $23 / $85, в конце «1 hour free» и бот.</p>
       <p class="meta">Длина 8 с · без звука · компьютер <b>362 КБ</b> · телефон <b>269 КБ</b></p></div>
     <div class="hero square" data-v="v1">
-      <video muted loop playsinline preload="none" poster="v1-desktop.jpg"></video>
+      <video muted autoplay loop playsinline preload="metadata" poster="v1-desktop.jpg"></video>
       <div class="copy">
         <div class="tag">BM USA PROXY</div>
         <div class="h">US Mobile Proxies on Real 5G Phones</div>
@@ -74,7 +76,7 @@ footer{color:#466D8E;font-size:15px}
     <div class="cap"><span class="num">Вариант 2</span><h2>Настоящие телефоны</h2><p>Спокойнее, 12 с: три 5G-телефона AT&amp;T, T-Mobile, Verizon → «3 US carriers» → «10 US cities» со списком городов.</p>
       <p class="meta">Длина 12 с · без звука · компьютер <b>392 КБ</b> · телефон <b>240 КБ</b></p></div>
     <div class="hero square" data-v="v2">
-      <video muted loop playsinline preload="none" poster="v2-desktop.jpg"></video>
+      <video muted autoplay loop playsinline preload="metadata" poster="v2-desktop.jpg"></video>
       <div class="copy">
         <div class="tag">BM USA PROXY</div>
         <div class="h">US Mobile Proxies on Real 5G Phones</div>
@@ -87,7 +89,7 @@ footer{color:#466D8E;font-size:15px}
     <div class="cap"><span class="num">Вариант 3</span><h2>Бесплатный час</h2><p>10 с, звезда BM в центре: «1 hour free», потом @bmproxy_bot и «then from $4/day».</p>
       <p class="meta">Длина 10 с · без звука · компьютер <b>333 КБ</b> · телефон <b>255 КБ</b></p></div>
     <div class="hero square" data-v="v3">
-      <video muted loop playsinline preload="none" poster="v3-desktop.jpg"></video>
+      <video muted autoplay loop playsinline preload="metadata" poster="v3-desktop.jpg"></video>
       <div class="copy">
         <div class="tag">BM USA PROXY</div>
         <div class="h">US Mobile Proxies on Real 5G Phones</div>
@@ -100,7 +102,7 @@ footer{color:#466D8E;font-size:15px}
     <div class="cap"><span class="num">Вариант 4</span><h2>Ролик канала целиком</h2><p>Ролик «BM PROXY BOT» с YouTube, 12 с: звезда с подписью справа, слева тёмное место под текст.</p>
       <p class="meta">Длина 12 с · без звука · компьютер <b>379 КБ</b> · телефон <b>154 КБ</b></p></div>
     <div class="hero tall" data-v="v4">
-      <video muted loop playsinline preload="none" poster="v4-desktop.jpg"></video>
+      <video muted autoplay loop playsinline preload="metadata" poster="v4-desktop.jpg"></video>
       <div class="copy">
         <div class="tag">BM USA PROXY</div>
         <div class="h">US Mobile Proxies on Real 5G Phones</div>
@@ -113,7 +115,7 @@ footer{color:#466D8E;font-size:15px}
     <div class="cap"><span class="num">Вариант 5</span><h2>Звезда крупно</h2><p>Тот же ролик, 8 с: звезда крупным планом, медленно «дышит» приближением, подписи нет.</p>
       <p class="meta">Длина 8 с · без звука · компьютер <b>445 КБ</b> · телефон <b>235 КБ</b></p></div>
     <div class="hero tall" data-v="v5">
-      <video muted loop playsinline preload="none" poster="v5-desktop.jpg"></video>
+      <video muted autoplay loop playsinline preload="metadata" poster="v5-desktop.jpg"></video>
       <div class="copy">
         <div class="tag">BM USA PROXY</div>
         <div class="h">US Mobile Proxies on Real 5G Phones</div>
@@ -126,7 +128,7 @@ footer{color:#466D8E;font-size:15px}
     <div class="cap"><span class="num">Вариант 6</span><h2>Без логотипа</h2><p>Только светящиеся линии сети из ролика, замедлено, 12 с. Самый спокойный фон, текст читается лучше всего.</p>
       <p class="meta">Длина 12 с · без звука · компьютер <b>156 КБ</b> · телефон <b>125 КБ</b></p></div>
     <div class="hero tall" data-v="v6">
-      <video muted loop playsinline preload="none" poster="v6-desktop.jpg"></video>
+      <video muted autoplay loop playsinline preload="metadata" poster="v6-desktop.jpg"></video>
       <div class="copy">
         <div class="tag">BM USA PROXY</div>
         <div class="h">US Mobile Proxies on Real 5G Phones</div>
@@ -153,6 +155,17 @@ footer{color:#466D8E;font-size:15px}
   }
   [].forEach.call(document.querySelectorAll(".sw button"), function(b){ b.addEventListener("click", function(){ apply(b.dataset.m); }); });
   apply(mode);
+  vids.forEach(function(v){
+    var hero = v.parentNode, id = hero.dataset.v;
+    v.muted = true; v.defaultMuted = true; v.setAttribute("webkit-playsinline", "");
+    var b = document.createElement("button"); b.type = "button"; b.className = "play"; b.setAttribute("aria-label", "Включить видео"); b.textContent = "▶";
+    hero.appendChild(b);
+    hero.addEventListener("click", function(){ if (v.paused) v.play().catch(function(){}); else v.pause(); });
+    v.addEventListener("playing", function(){ hero.classList.add("playing"); });
+    v.addEventListener("pause", function(){ hero.classList.remove("playing"); });
+    var cap = hero.parentNode.querySelector(".meta");
+    if (cap) { var p = document.createElement("p"); p.className = "meta links"; p.innerHTML = 'Открыть ролик отдельно: <a href="' + id + '-desktop.mp4">компьютер</a> · <a href="' + id + '-phone.mp4">телефон</a>'; cap.after(p); }
+  });
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
       var v = e.target;
