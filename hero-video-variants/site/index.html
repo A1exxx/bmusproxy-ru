@@ -1731,7 +1731,7 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 		<script src='https://img1.wsimg.com/traffic-assets/js/tccl-tti.min.js' onload="window.tti.calculateTTI()"></script>
 		<script>
 (function(){
-  var q = new URLSearchParams(location.search), v = +(q.get("v") || 1), m = q.get("m") || "img";
+  var q = new URLSearchParams(location.search), v = +(q.get("v") || 1), m = q.get("m") || (v >= 4 ? "bg" : "img");
   var base = "https://a1exxx.github.io/bmusproxy-ru/hero-video-variants/";
   var phone = matchMedia("(max-width: 767px)").matches;
   function mk(cls){

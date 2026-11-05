@@ -164,7 +164,7 @@ footer{color:#466D8E;font-size:15px}
     v.addEventListener("playing", function(){ hero.classList.add("playing"); });
     v.addEventListener("pause", function(){ hero.classList.remove("playing"); });
     var cap = hero.parentNode.querySelector(".meta");
-    if (cap) { var p = document.createElement("p"); p.className = "meta links"; p.innerHTML = 'Открыть ролик отдельно: <a href="' + id + '-desktop.mp4">компьютер</a> · <a href="' + id + '-phone.mp4">телефон</a>'; cap.after(p); }
+    if (cap) { var p = document.createElement("p"); p.className = "meta links"; p.innerHTML = 'Как на сайте: <a href="site/?v=' + id.slice(1) + '">открыть на копии главной</a> · Открыть ролик отдельно: <a href="' + id + '-desktop.mp4">компьютер</a> · <a href="' + id + '-phone.mp4">телефон</a>'; cap.after(p); }
   });
   var io = new IntersectionObserver(function(es){
     es.forEach(function(e){
