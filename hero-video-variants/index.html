@@ -1,0 +1,166 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow">
+<title>Видео на первый экран — 6 вариантов</title>
+<link rel="stylesheet" href="/bmusproxy-ru/wp-content/uploads/elementor/google-fonts/css/roboto.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#eef4f9;color:#0E385C;font:400 17px/1.5 Roboto,system-ui,sans-serif}
+.w{max-width:1100px;margin:0 auto;padding:28px 16px 64px;display:flex;flex-direction:column;gap:40px}
+header h1{margin:0 0 8px;font-size:clamp(26px,4vw,36px);line-height:1.15;font-weight:900}
+header p{margin:0;color:#466D8E;max-width:66ch}
+.sw{display:inline-flex;margin-top:18px;background:#fff;border:1px solid #cfe1ef;border-radius:999px;padding:4px}
+.sw button{font:inherit;font-size:15px;font-weight:700;border:0;background:none;color:#195079;padding:8px 18px;border-radius:999px;cursor:pointer}
+.sw button[aria-pressed=true]{background:#195079;color:#fff}
+.var{display:flex;flex-direction:column;gap:14px}
+.cap h2{margin:2px 0 4px;font-size:22px;line-height:1.2}
+.cap p{margin:0;color:#3d5b78;max-width:72ch}
+.cap .meta{margin-top:6px;font-size:15px;color:#466D8E}
+.cap .meta b{color:#0E385C}
+.num{display:inline-block;background:#CD3833;color:#fff;font-weight:700;font-size:13px;border-radius:999px;padding:2px 12px}
+
+/* the mock first screen */
+.hero{position:relative;overflow:hidden;border-radius:16px;background:#06142a;color:#fff;container-type:inline-size;box-shadow:0 18px 44px rgba(6,20,42,.22)}
+.hero video{display:block;width:100%;height:100%;object-fit:cover}
+.copy{display:flex;flex-direction:column;align-items:flex-start;gap:1.4cqw}
+.tag{font-size:max(11px,1.1cqw);font-weight:700;letter-spacing:.16em;color:#9cc6e6}
+.h{font-weight:900;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;text-wrap:balance}
+.price{color:#cfe1f2}.price b{color:#fff}
+.btn{display:inline-block;background:#d6383c;color:#fff;font-weight:700;border-radius:8px;box-shadow:0 10px 26px rgba(214,56,60,.4)}
+
+/* desktop look: 16:9, video fills, text on the left */
+body:not(.ph) .hero{aspect-ratio:16/9}
+body:not(.ph) .hero video{position:absolute;inset:0}
+body:not(.ph) .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,20,42,.85) 0%,rgba(6,20,42,.55) 34%,rgba(6,20,42,0) 52%)}
+body:not(.ph) .copy{position:absolute;z-index:1;left:5.5cqw;top:50%;transform:translateY(-50%);width:40cqw}
+body:not(.ph) .h{font-size:4.3cqw}
+body:not(.ph) .price{font-size:max(13px,1.8cqw)}
+body:not(.ph) .btn{font-size:max(12px,1.5cqw);padding:1.1cqw 2.4cqw;margin-top:.8cqw}
+
+/* phone look: a 360px-wide screen */
+body.ph .hero{width:100%;max-width:360px;margin:0 auto;border:8px solid #0b1b33;border-radius:34px}
+body.ph .copy{position:relative;z-index:1;align-items:center;text-align:center;gap:10px;padding:0 18px 26px}
+body.ph .h{font-size:27px}
+body.ph .price{font-size:16px}
+body.ph .btn{font-size:16px;padding:12px 24px}
+body.ph .hero.square video{aspect-ratio:1/1}
+body.ph .hero.square .copy{padding-top:14px}
+body.ph .hero.tall{aspect-ratio:9/16;display:flex;flex-direction:column;justify-content:flex-end}
+body.ph .hero.tall video{position:absolute;inset:0}
+body.ph .tag{font-size:11px}
+footer{color:#466D8E;font-size:15px}
+@media (prefers-reduced-motion:reduce){.hero video{display:none}}
+</style></head><body>
+<div class="w">
+<header>
+  <h1>Видео на первый экран сайта — 6 вариантов</h1>
+  <p>Каждый вариант показан так, как он будет выглядеть на первом экране: видео идёт фоном по кругу, без звука, поверх — заголовок, цена и кнопка. Варианты 1–3 сделаны из ролика со звездой BM, 4–6 — из ролика канала «BM PROXY BOT» на YouTube. У каждого есть версия для компьютера и для телефона.</p>
+  <div class="sw" role="group" aria-label="Как смотреть"><button type="button" data-m="pc">Компьютер</button><button type="button" data-m="ph">Телефон</button></div>
+</header>
+
+  <section class="var" id="v1">
+    <div class="cap"><span class="num">Вариант 1</span><h2>Цена крупно</h2><p>Быстрый ролик 8 с: «$4/day», затем три тарифа $4 / $23 / $85, в конце «1 hour free» и бот.</p>
+      <p class="meta">Длина 8 с · без звука · компьютер <b>362 КБ</b> · телефон <b>269 КБ</b></p></div>
+    <div class="hero square" data-v="v1">
+      <video muted loop playsinline preload="none" poster="v1-desktop.jpg"></video>
+      <div class="copy">
+        <div class="tag">BM USA PROXY</div>
+        <div class="h">US Mobile Proxies on Real 5G Phones</div>
+        <div class="price">from <b>$4/day</b></div>
+        <span class="btn">Get a free trial</span>
+      </div>
+    </div>
+  </section>
+  <section class="var" id="v2">
+    <div class="cap"><span class="num">Вариант 2</span><h2>Настоящие телефоны</h2><p>Спокойнее, 12 с: три 5G-телефона AT&amp;T, T-Mobile, Verizon → «3 US carriers» → «10 US cities» со списком городов.</p>
+      <p class="meta">Длина 12 с · без звука · компьютер <b>392 КБ</b> · телефон <b>240 КБ</b></p></div>
+    <div class="hero square" data-v="v2">
+      <video muted loop playsinline preload="none" poster="v2-desktop.jpg"></video>
+      <div class="copy">
+        <div class="tag">BM USA PROXY</div>
+        <div class="h">US Mobile Proxies on Real 5G Phones</div>
+        <div class="price">from <b>$4/day</b></div>
+        <span class="btn">Get a free trial</span>
+      </div>
+    </div>
+  </section>
+  <section class="var" id="v3">
+    <div class="cap"><span class="num">Вариант 3</span><h2>Бесплатный час</h2><p>10 с, звезда BM в центре: «1 hour free», потом @bmproxy_bot и «then from $4/day».</p>
+      <p class="meta">Длина 10 с · без звука · компьютер <b>333 КБ</b> · телефон <b>255 КБ</b></p></div>
+    <div class="hero square" data-v="v3">
+      <video muted loop playsinline preload="none" poster="v3-desktop.jpg"></video>
+      <div class="copy">
+        <div class="tag">BM USA PROXY</div>
+        <div class="h">US Mobile Proxies on Real 5G Phones</div>
+        <div class="price">from <b>$4/day</b></div>
+        <span class="btn">Get a free trial</span>
+      </div>
+    </div>
+  </section>
+  <section class="var" id="v4">
+    <div class="cap"><span class="num">Вариант 4</span><h2>Ролик канала целиком</h2><p>Ролик «BM PROXY BOT» с YouTube, 12 с: звезда с подписью справа, слева тёмное место под текст.</p>
+      <p class="meta">Длина 12 с · без звука · компьютер <b>379 КБ</b> · телефон <b>154 КБ</b></p></div>
+    <div class="hero tall" data-v="v4">
+      <video muted loop playsinline preload="none" poster="v4-desktop.jpg"></video>
+      <div class="copy">
+        <div class="tag">BM USA PROXY</div>
+        <div class="h">US Mobile Proxies on Real 5G Phones</div>
+        <div class="price">from <b>$4/day</b></div>
+        <span class="btn">Get a free trial</span>
+      </div>
+    </div>
+  </section>
+  <section class="var" id="v5">
+    <div class="cap"><span class="num">Вариант 5</span><h2>Звезда крупно</h2><p>Тот же ролик, 8 с: звезда крупным планом, медленно «дышит» приближением, подписи нет.</p>
+      <p class="meta">Длина 8 с · без звука · компьютер <b>445 КБ</b> · телефон <b>235 КБ</b></p></div>
+    <div class="hero tall" data-v="v5">
+      <video muted loop playsinline preload="none" poster="v5-desktop.jpg"></video>
+      <div class="copy">
+        <div class="tag">BM USA PROXY</div>
+        <div class="h">US Mobile Proxies on Real 5G Phones</div>
+        <div class="price">from <b>$4/day</b></div>
+        <span class="btn">Get a free trial</span>
+      </div>
+    </div>
+  </section>
+  <section class="var" id="v6">
+    <div class="cap"><span class="num">Вариант 6</span><h2>Без логотипа</h2><p>Только светящиеся линии сети из ролика, замедлено, 12 с. Самый спокойный фон, текст читается лучше всего.</p>
+      <p class="meta">Длина 12 с · без звука · компьютер <b>156 КБ</b> · телефон <b>125 КБ</b></p></div>
+    <div class="hero tall" data-v="v6">
+      <video muted loop playsinline preload="none" poster="v6-desktop.jpg"></video>
+      <div class="copy">
+        <div class="tag">BM USA PROXY</div>
+        <div class="h">US Mobile Proxies on Real 5G Phones</div>
+        <div class="price">from <b>$4/day</b></div>
+        <span class="btn">Get a free trial</span>
+      </div>
+    </div>
+  </section>
+<footer>Вес указан для самого видео; до его загрузки показывается картинка-обложка, поэтому страница не ждёт видео.</footer>
+</div>
+<script>
+(function(){
+  var mode = matchMedia("(max-width: 700px)").matches ? "ph" : "pc";
+  var vids = [].slice.call(document.querySelectorAll(".hero video"));
+  function apply(m){
+    mode = m;
+    document.body.classList.toggle("ph", m === "ph");
+    [].forEach.call(document.querySelectorAll(".sw button"), function(b){ b.setAttribute("aria-pressed", b.dataset.m === m); });
+    vids.forEach(function(v){
+      var id = v.parentNode.dataset.v, f = m === "ph" ? "phone" : "desktop";
+      v.poster = id + "-" + f + ".jpg";
+      if (v.dataset.f !== f) { v.dataset.f = f; v.src = id + "-" + f + ".mp4"; if (v.dataset.on) v.play().catch(function(){}); }
+    });
+  }
+  [].forEach.call(document.querySelectorAll(".sw button"), function(b){ b.addEventListener("click", function(){ apply(b.dataset.m); }); });
+  apply(mode);
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      var v = e.target;
+      if (e.isIntersecting) { v.dataset.on = "1"; v.play().catch(function(){}); }
+      else { delete v.dataset.on; v.pause(); }
+    });
+  }, {threshold: 0.25});
+  vids.forEach(function(v){ io.observe(v); });
+})();
+</script>
+</body></html>
