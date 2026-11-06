@@ -33,6 +33,32 @@
 .hv-media{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 18px 40px rgba(6,20,42,.25);background:#06142a}
 .hv-yt{position:relative;aspect-ratio:16/9;overflow:hidden}
 .hv-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#hvtabs .hv-t + .hv-row + .hv-t{margin-top:10px}
+#hvtabs a.lay.on{background:#f0a43a;color:#0e2f4f}
+/* left */
+body.hv-l-left .elementor-element-c371ec2>.e-con-inner{flex-direction:row-reverse!important}
+/* center */
+body.hv-l-center .elementor-element-c371ec2>.e-con-inner{flex-direction:column!important;align-items:center!important;text-align:center}
+body.hv-l-center .elementor-element-c371ec2 .elementor-element-3b2e318,body.hv-l-center .elementor-element-c371ec2 .elementor-element-4b04576{width:100%!important;max-width:960px;align-items:center}
+body.hv-l-center .elementor-element-c371ec2 .elementor-element-3b2e318 .elementor-heading-title,body.hv-l-center .elementor-element-c371ec2 .elementor-element-f9e61d5{text-align:center!important}
+body.hv-l-center .elementor-element-c371ec2 .elementor-element-0d31358{justify-content:center!important}
+body.hv-l-center .elementor-element-c371ec2 .hv-media{max-width:960px;margin:0 auto}
+/* bg */
+body.hv-l-bg .elementor-element-c371ec2{position:relative;overflow:hidden;min-height:620px}
+body.hv-l-bg .elementor-element-c371ec2>.hv-back{position:absolute;inset:0;z-index:0;overflow:hidden;background:#06142a}
+body.hv-l-bg .elementor-element-c371ec2>.hv-back::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,20,42,.9) 0%,rgba(6,20,42,.65) 50%,rgba(6,20,42,.3) 100%)}
+body.hv-l-bg .elementor-element-c371ec2>.hv-back .hv-back-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;border-radius:0}
+body.hv-l-bg .elementor-element-c371ec2>.hv-back .hv-yt iframe{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border:0;pointer-events:none}
+body.hv-l-bg .elementor-element-c371ec2>.e-con-inner{position:relative;z-index:1}
+body.hv-l-bg .elementor-element-c371ec2 .elementor-element-4b04576{display:none!important}
+body.hv-l-bg .elementor-element-c371ec2 .elementor-element-145bf4e .elementor-heading-title,body.hv-l-bg .elementor-element-c371ec2 .elementor-element-f9e61d5,body.hv-l-bg .elementor-element-c371ec2 .elementor-element-f9e61d5 p{color:#fff!important}
+body.hv-l-bg .elementor-element-c371ec2 .elementor-element-96a8045 .elementor-heading-title{color:#ff8a80!important}
+@media (max-width:767px){body.hv-l-bg .elementor-element-c371ec2{min-height:560px}body.hv-l-bg .elementor-element-c371ec2>.hv-back::after{background:rgba(6,20,42,.7)}}
+/* only */
+body.hv-l-only .elementor-element-c371ec2 .elementor-element-3b2e318{display:none!important}
+body.hv-l-only .elementor-element-c371ec2 .elementor-element-4b04576{width:100%!important;max-width:1100px;margin:0 auto;flex-direction:column!important;align-items:center;gap:22px}
+body.hv-l-only .elementor-element-c371ec2 .elementor-element-873688f{width:100%!important}
+body.hv-l-only .elementor-element-c371ec2 .elementor-element-0d31358{justify-content:center!important;width:auto!important}
 </style>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1757,36 +1783,58 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 		<script>
 (function(){
   var NAMES = ["Как сейчас (картинка)", "1 · Цена крупно", "2 · Настоящие телефоны", "3 · Бесплатный час", "4 · Ролик канала", "5 · Звезда крупно", "6 · Без логотипа", "7 · Тест скорости"];
-  var q = new URLSearchParams(location.search), v = parseInt(q.get("v"), 10);
+  var LAYOUTS = [["right", "Текст слева, видео справа"], ["left", "Видео слева, текст справа"], ["center", "Заголовок сверху, видео под ним"], ["bg", "Видео фоном на весь экран, текст поверх"], ["only", "Только видео, без текста"]];
+  var q = new URLSearchParams(location.search), v = parseInt(q.get("v"), 10), l = q.get("l") || "right";
   if (!(v >= 0 && v <= 7)) v = 1;
+  if (!LAYOUTS.some(function(x){ return x[0] === l; })) l = "right";
   var base = "https://a1exxx.github.io/bmusproxy-ru/hero-video-variants/";
   var page = location.origin + location.pathname;
   var phone = matchMedia("(max-width: 767px)").matches;
   var YT = "Nc3FVHvQJY8";
-  function video(){
+  function video(cls){
     var e = document.createElement("video"), f = phone ? "phone" : "desktop";
     e.muted = true; e.defaultMuted = true; e.autoplay = true; e.loop = true; e.playsInline = true;
-    e.setAttribute("muted",""); e.setAttribute("playsinline",""); e.className = "hv-media";
+    e.setAttribute("muted",""); e.setAttribute("playsinline",""); e.className = cls;
     e.poster = base + "v" + v + "-" + f + ".jpg"; e.src = base + "v" + v + "-" + f + ".mp4";
     var go = function(){ e.play().catch(function(){}); };
     e.addEventListener("canplay", go); document.addEventListener("click", go, {once:true}); document.addEventListener("touchstart", go, {once:true});
     return e;
   }
-  function youtube(){
-    var w = document.createElement("div"); w.className = "hv-media hv-yt";
+  function youtube(cls){
+    var w = document.createElement("div"); w.className = cls + " hv-yt";
     w.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + YT + '?autoplay=1&mute=1&loop=1&playlist=' + YT + '&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Speed test"></iframe>';
     return w;
   }
+  function media(cls){
+    if (v === 7) return youtube(cls);
+    if (v > 0) return video(cls);
+    var im = document.createElement("img"); im.className = cls; im.src = "https://bmusproxy.com/wp-content/uploads/2025/11/main.png"; im.alt = ""; return im;
+  }
   function run(){
-    if (v > 0) {
-      var img = document.querySelector(".elementor-element-c371ec2 .elementor-element-873688f img");
-      if (img) img.replaceWith(v === 7 ? youtube() : video());
+    var hero = document.querySelector(".elementor-element-c371ec2");
+    var img = hero && hero.querySelector(".elementor-element-873688f img");
+    if (hero) {
+      document.body.classList.add("hv-l-" + l);
+      if (l === "bg") {
+        var back = document.createElement("div"); back.className = "hv-back";
+        back.appendChild(media("hv-back-media"));
+        hero.insertBefore(back, hero.firstChild);
+        if (v === 7) { var fit = function(){ var f = back.querySelector("iframe"); if (!f) return; var W = back.clientWidth, H = back.clientHeight; if (W / H > 16/9) { f.style.width = W + "px"; f.style.height = (W * 9 / 16) + "px"; } else { f.style.height = H + "px"; f.style.width = (H * 16 / 9) + "px"; } }; setTimeout(fit, 0); addEventListener("resize", fit); }
+      } else if (img && v > 0) {
+        img.replaceWith(media("hv-media"));
+      }
+      if (l === "only") {
+        var btns = hero.querySelector(".elementor-element-0d31358"), col = hero.querySelector(".elementor-element-4b04576");
+        if (btns && col) col.appendChild(btns);
+      }
     }
     var bar = document.createElement("div"); bar.id = "hvtabs";
-    var h = '<div class="hv-t">Видео на первом экране — нажми вариант:</div><div class="hv-row">';
-    for (var k = 1; k <= 7; k++) h += '<a href="' + page + '?v=' + k + '"' + (k === v ? ' class="on"' : '') + '>' + NAMES[k] + '</a>';
-    h += '<a href="' + page + '?v=0"' + (v === 0 ? ' class="on"' : '') + '>' + NAMES[0] + '</a>';
-    h += '<a class="all" href="' + base + '">Все варианты списком</a></div>';
+    var h = '<div class="hv-t">Какое видео:</div><div class="hv-row">';
+    for (var k = 1; k <= 7; k++) h += '<a href="' + page + '?v=' + k + '&l=' + l + '"' + (k === v ? ' class="on"' : '') + '>' + NAMES[k] + '</a>';
+    h += '<a href="' + page + '?v=0&l=' + l + '"' + (v === 0 ? ' class="on"' : '') + '>' + NAMES[0] + '</a></div>';
+    h += '<div class="hv-t">Как расположить:</div><div class="hv-row">';
+    LAYOUTS.forEach(function(x){ h += '<a href="' + page + '?v=' + v + '&l=' + x[0] + '"' + (x[0] === l ? ' class="on lay"' : ' class="lay"') + '>' + x[1] + '</a>'; });
+    h += '<a class="all" href="' + base + '">Все ролики списком</a></div>';
     bar.innerHTML = h;
     bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = a.href; } }, true);
     document.body.insertBefore(bar, document.body.firstChild);
