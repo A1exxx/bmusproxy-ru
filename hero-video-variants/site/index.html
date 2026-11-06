@@ -23,6 +23,16 @@
 .hv-bg .elementor-element-873688f{visibility:hidden}
 .hv-bg h1,.hv-bg h2,.hv-bg p,.hv-bg .elementor-heading-title,.hv-bg .elementor-widget-text-editor{color:#fff!important}
 @media (max-width:767px){.hv-bg .elementor-element-873688f{display:none}}
+#hvtabs{position:sticky;top:0;z-index:99999;background:#0e385c;color:#fff;padding:10px 14px 12px;font:600 14px/1.2 Roboto,system-ui,sans-serif;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+#hvtabs .hv-t{color:#9cc6e6;font-weight:500;margin:0 0 8px}
+#hvtabs .hv-row{display:flex;flex-wrap:wrap;gap:6px}
+#hvtabs a{color:#fff;text-decoration:none;padding:9px 12px;border-radius:9px;background:rgba(255,255,255,.12);white-space:nowrap}
+#hvtabs a.on{background:#d6383c}
+#hvtabs a.all{background:none;text-decoration:underline;color:#9cc6e6}
+@media (max-width:767px){#hvtabs .hv-row{flex-wrap:nowrap;overflow-x:auto}#hvtabs a{flex:none;font-size:13px;padding:8px 10px}}
+.hv-media{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 18px 40px rgba(6,20,42,.25);background:#06142a}
+.hv-yt{position:relative;aspect-ratio:16/9;overflow:hidden}
+.hv-yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 </style>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1746,58 +1756,41 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 		<script src='https://img1.wsimg.com/traffic-assets/js/tccl-tti.min.js' onload="window.tti.calculateTTI()"></script>
 		<script>
 (function(){
-  var q = new URLSearchParams(location.search), v = +(q.get("v") || 1), m = q.get("m") || (v >= 4 && v <= 6 ? "bg" : "img");
+  var NAMES = ["Как сейчас (картинка)", "1 · Цена крупно", "2 · Настоящие телефоны", "3 · Бесплатный час", "4 · Ролик канала", "5 · Звезда крупно", "6 · Без логотипа", "7 · Тест скорости"];
+  var q = new URLSearchParams(location.search), v = parseInt(q.get("v"), 10);
+  if (!(v >= 0 && v <= 7)) v = 1;
   var base = "https://a1exxx.github.io/bmusproxy-ru/hero-video-variants/";
+  var page = location.origin + location.pathname;
   var phone = matchMedia("(max-width: 767px)").matches;
-  function mk(cls){
-    var e = document.createElement("video");
+  var YT = "Nc3FVHvQJY8";
+  function video(){
+    var e = document.createElement("video"), f = phone ? "phone" : "desktop";
     e.muted = true; e.defaultMuted = true; e.autoplay = true; e.loop = true; e.playsInline = true;
-    e.setAttribute("muted",""); e.setAttribute("playsinline",""); e.setAttribute("webkit-playsinline","");
-    e.className = cls;
-    var f = (m === "img" || phone) ? (phone && m === "bg" ? "phone" : "desktop") : "desktop";
-    if (m === "img") f = phone ? "phone" : "desktop";
+    e.setAttribute("muted",""); e.setAttribute("playsinline",""); e.className = "hv-media";
     e.poster = base + "v" + v + "-" + f + ".jpg"; e.src = base + "v" + v + "-" + f + ".mp4";
     var go = function(){ e.play().catch(function(){}); };
     e.addEventListener("canplay", go); document.addEventListener("click", go, {once:true}); document.addEventListener("touchstart", go, {once:true});
     return e;
   }
-  var YT = "Nc3FVHvQJY8";
-  function ytSrc(auto){ return "https://www.youtube-nocookie.com/embed/" + YT + (auto ? "?autoplay=1&mute=1&loop=1&playlist=" + YT + "&controls=0&playsinline=1&rel=0&modestbranding=1" : "?autoplay=1&playsinline=1&rel=0"); }
-  function frame(auto){ return '<iframe src="' + ytSrc(auto) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Speed test"></iframe>'; }
-  function yt(cls){
-    var w = document.createElement("div"); w.className = cls + " hv-yt";
-    if (m === "click") {
-      w.innerHTML = '<img src="https://bmusproxy.com/wp-content/uploads/2025/11/video.png" alt="Speed test video"><button type="button" class="hv-play" aria-label="Play">&#9654;</button>';
-      w.addEventListener("click", function(){ w.innerHTML = frame(false); }, {once:true});
-    } else { w.innerHTML = frame(true); }
-    if (cls === "hv-back") {
-      var fit = function(){ var f = w.querySelector("iframe"); if (!f) return; var W = w.clientWidth, H = w.clientHeight; if (W / H > 16/9) { f.style.width = W + "px"; f.style.height = (W * 9 / 16) + "px"; } else { f.style.height = H + "px"; f.style.width = (H * 16 / 9) + "px"; } };
-      setTimeout(fit, 0); addEventListener("resize", fit);
-    }
+  function youtube(){
+    var w = document.createElement("div"); w.className = "hv-media hv-yt";
+    w.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + YT + '?autoplay=1&mute=1&loop=1&playlist=' + YT + '&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Speed test"></iframe>';
     return w;
   }
   function run(){
-    if (v === 7) {
-      var hero7 = document.querySelector(".elementor-element-c371ec2");
-      var img7 = hero7 && hero7.querySelector(".elementor-element-873688f img");
-      if (m === "bg" && hero7) { hero7.classList.add("hv-bg"); hero7.insertBefore(yt("hv-back"), hero7.firstChild); }
-      else if (img7) { img7.replaceWith(yt("hv-img")); }
-    } else if (v > 0) {
-      var hero = document.querySelector(".elementor-element-c371ec2");
-      var img = hero && hero.querySelector(".elementor-element-873688f img");
-      if (m === "bg" && hero) { hero.classList.add("hv-bg"); hero.insertBefore(mk("hv-back"), hero.firstChild); }
-      else if (img) { img.replaceWith(mk("hv-img")); }
+    if (v > 0) {
+      var img = document.querySelector(".elementor-element-c371ec2 .elementor-element-873688f img");
+      if (img) img.replaceWith(v === 7 ? youtube() : video());
     }
-    var bar = document.createElement("div"); bar.id = "hvbar";
-    var h = '<span>Вариант</span>';
-    var names = ["сейчас", "1", "2", "3", "4", "5", "6", "Скорость"];
-    for (var i = 0; i <= 7; i++) { var mm = i === 7 ? "img" : (i >= 4 ? "bg" : "img"); h += '<a href="?v=' + i + '&m=' + mm + '"' + (i === v ? ' class="on"' : '') + '>' + names[i] + '</a>'; }
-    h += '<span>|</span><a href="?v=' + v + '&m=img"' + (m === "img" ? ' class="on"' : '') + '>вместо картинки</a>';
-    h += '<a href="?v=' + v + '&m=bg"' + (m === "bg" ? ' class="on"' : '') + '>фоном</a>';
-    if (v === 7) h += '<a href="?v=7&m=click"' + (m === "click" ? ' class="on"' : '') + '>с кнопкой ▶</a>';
+    var bar = document.createElement("div"); bar.id = "hvtabs";
+    var h = '<div class="hv-t">Видео на первом экране — нажми вариант:</div><div class="hv-row">';
+    for (var k = 1; k <= 7; k++) h += '<a href="' + page + '?v=' + k + '"' + (k === v ? ' class="on"' : '') + '>' + NAMES[k] + '</a>';
+    h += '<a href="' + page + '?v=0"' + (v === 0 ? ' class="on"' : '') + '>' + NAMES[0] + '</a>';
+    h += '<a class="all" href="' + base + '">Все варианты списком</a></div>';
     bar.innerHTML = h;
-    bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = location.origin + location.pathname + a.getAttribute("href"); } }, true);
-    document.body.appendChild(bar);
+    bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = a.href; } }, true);
+    document.body.insertBefore(bar, document.body.firstChild);
+    var old = document.getElementById("hvbar"); if (old) old.remove();
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
 })();
