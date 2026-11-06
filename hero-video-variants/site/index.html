@@ -1796,7 +1796,7 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     h += '<a href="?v=' + v + '&m=bg"' + (m === "bg" ? ' class="on"' : '') + '>фоном</a>';
     if (v === 7) h += '<a href="?v=7&m=click"' + (m === "click" ? ' class="on"' : '') + '>с кнопкой ▶</a>';
     bar.innerHTML = h;
-    bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = location.pathname + a.getAttribute("href"); } }, true);
+    bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = location.origin + location.pathname + a.getAttribute("href"); } }, true);
     document.body.appendChild(bar);
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
