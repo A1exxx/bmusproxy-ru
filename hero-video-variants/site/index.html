@@ -59,6 +59,13 @@ body.hv-l-only .elementor-element-c371ec2 .elementor-element-3b2e318{display:non
 body.hv-l-only .elementor-element-c371ec2 .elementor-element-4b04576{width:100%!important;max-width:1100px;margin:0 auto;flex-direction:column!important;align-items:center;gap:22px}
 body.hv-l-only .elementor-element-c371ec2 .elementor-element-873688f{width:100%!important}
 body.hv-l-only .elementor-element-c371ec2 .elementor-element-0d31358{justify-content:center!important;width:auto!important}
+#hvtabs a.dev.on{background:#2fa36b}
+body.hv-shell{margin:0;background:#dfe7ef;min-height:100vh}
+#hvstage{display:flex;justify-content:center;padding:18px 12px 30px}
+#hvstage.hv-phone .hv-dev{width:375px;height:760px;border:12px solid #0b1b33;border-radius:44px;overflow:hidden;background:#fff;box-shadow:0 20px 50px rgba(0,0,0,.3);max-width:100%}
+#hvstage.hv-phone iframe{width:375px;height:100%;border:0;display:block}
+#hvstage.hv-pc .hv-dev{overflow:hidden;border:1px solid #b9c7d6;border-radius:10px;background:#fff;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+#hvstage.hv-pc iframe{width:1366px;height:820px;border:0;transform-origin:0 0;display:block}
 </style>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1784,7 +1791,7 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 (function(){
   var NAMES = ["Как сейчас (картинка)", "1 · Цена крупно", "2 · Настоящие телефоны", "3 · Бесплатный час", "4 · Ролик канала", "5 · Звезда крупно", "6 · Без логотипа", "7 · Тест скорости"];
   var LAYOUTS = [["right", "Текст слева, видео справа"], ["left", "Видео слева, текст справа"], ["center", "Заголовок сверху, видео под ним"], ["bg", "Видео фоном на весь экран, текст поверх"], ["only", "Только видео, без текста"]];
-  var q = new URLSearchParams(location.search), v = parseInt(q.get("v"), 10), l = q.get("l") || "right";
+  var q = new URLSearchParams(location.search), v = parseInt(q.get("v"), 10), l = q.get("l") || "right", d = q.get("d") || "";
   if (!(v >= 0 && v <= 7)) v = 1;
   if (!LAYOUTS.some(function(x){ return x[0] === l; })) l = "right";
   var base = "https://a1exxx.github.io/bmusproxy-ru/hero-video-variants/";
@@ -1810,7 +1817,26 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     if (v > 0) return video(cls);
     var im = document.createElement("img"); im.className = cls; im.src = "https://bmusproxy.com/wp-content/uploads/2025/11/main.png"; im.alt = ""; return im;
   }
+  function url(nv, nl, nd){ return page + "?v=" + nv + "&l=" + nl + (nd ? "&d=" + nd : ""); }
+  function shell(){
+    var stage = document.createElement("div"); stage.id = "hvstage";
+    var src = url(v, l, "frame");
+    if (d === "phone") {
+      stage.className = "hv-phone";
+      stage.innerHTML = '<div class="hv-dev"><iframe src="' + src + '" title="Телефон"></iframe></div>';
+    } else {
+      stage.className = "hv-pc";
+      stage.innerHTML = '<div class="hv-dev"><iframe src="' + src + '" title="Компьютер"></iframe></div>';
+      var fit = function(){ var box = stage.querySelector(".hv-dev"), f = box.querySelector("iframe"); var W = stage.clientWidth - 24, k = Math.min(1, W / 1366); f.style.transform = "scale(" + k + ")"; box.style.width = (1366 * k) + "px"; box.style.height = (820 * k) + "px"; };
+      setTimeout(fit, 0); addEventListener("resize", fit);
+    }
+    return stage;
+  }
   function run(){
+    if (d === "phone" || d === "pc") {
+      document.body.innerHTML = ""; document.body.className = "hv-shell";
+      document.body.appendChild(bar()); document.body.appendChild(shell()); return;
+    }
     var hero = document.querySelector(".elementor-element-c371ec2");
     var img = hero && hero.querySelector(".elementor-element-873688f img");
     if (hero) {
@@ -1828,17 +1854,24 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
         if (btns && col) col.appendChild(btns);
       }
     }
+    if (d !== "frame") document.body.insertBefore(bar(), document.body.firstChild);
+    var old = document.getElementById("hvbar"); if (old) old.remove();
+  }
+  function bar(){
     var bar = document.createElement("div"); bar.id = "hvtabs";
     var h = '<div class="hv-t">Какое видео:</div><div class="hv-row">';
-    for (var k = 1; k <= 7; k++) h += '<a href="' + page + '?v=' + k + '&l=' + l + '"' + (k === v ? ' class="on"' : '') + '>' + NAMES[k] + '</a>';
-    h += '<a href="' + page + '?v=0&l=' + l + '"' + (v === 0 ? ' class="on"' : '') + '>' + NAMES[0] + '</a></div>';
+    for (var k = 1; k <= 7; k++) h += '<a href="' + url(k, l, d) + '"' + (k === v ? ' class="on"' : '') + '>' + NAMES[k] + '</a>';
+    h += '<a href="' + url(0, l, d) + '"' + (v === 0 ? ' class="on"' : '') + '>' + NAMES[0] + '</a></div>';
     h += '<div class="hv-t">Как расположить:</div><div class="hv-row">';
-    LAYOUTS.forEach(function(x){ h += '<a href="' + page + '?v=' + v + '&l=' + x[0] + '"' + (x[0] === l ? ' class="on lay"' : ' class="lay"') + '>' + x[1] + '</a>'; });
+    LAYOUTS.forEach(function(x){ h += '<a href="' + url(v, x[0], d) + '"' + (x[0] === l ? ' class="on lay"' : ' class="lay"') + '>' + x[1] + '</a>'; });
+    h += '</div><div class="hv-t">Смотреть как:</div><div class="hv-row">';
+    var cur = d === "phone" || d === "pc" ? d : (phone ? "phone" : "pc");
+    h += '<a class="dev' + (cur === "pc" ? ' on' : '') + '" href="' + url(v, l, "pc") + '">💻 С компьютера</a>';
+    h += '<a class="dev' + (cur === "phone" ? ' on' : '') + '" href="' + url(v, l, "phone") + '">📱 С телефона</a>';
     h += '<a class="all" href="' + base + '">Все ролики списком</a></div>';
     bar.innerHTML = h;
     bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = a.href; } }, true);
-    document.body.insertBefore(bar, document.body.firstChild);
-    var old = document.getElementById("hvbar"); if (old) old.remove();
+    return bar;
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run); else run();
 })();
