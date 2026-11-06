@@ -13,7 +13,13 @@
 .hv-bg{position:relative;overflow:hidden}
 .hv-bg>video.hv-back{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .hv-bg::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,20,42,.88) 0%,rgba(6,20,42,.6) 45%,rgba(6,20,42,.25) 100%)}
-.hv-bg>*:not(video){position:relative;z-index:2}
+.hv-bg>*:not(.hv-back){position:relative;z-index:2}
+.hv-yt{position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;box-shadow:0 18px 40px rgba(6,20,42,.25);background:#06142a;cursor:pointer}
+.hv-yt iframe,.hv-yt img{position:absolute;left:0;top:0;width:100%;height:100%;border:0;object-fit:cover;display:block}
+.hv-yt .hv-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:60px;border:0;border-radius:16px;background:rgba(214,56,60,.92);color:#fff;font-size:28px;cursor:pointer}
+.hv-bg>.hv-back.hv-yt{position:absolute;inset:0;z-index:0;aspect-ratio:auto;border-radius:0;box-shadow:none;cursor:default}
+.hv-bg>.hv-back.hv-yt iframe{left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none}
+#hvbar small{display:block;font-weight:400;font-size:11px;opacity:.8;margin-top:3px}
 .hv-bg .elementor-element-873688f{visibility:hidden}
 .hv-bg h1,.hv-bg h2,.hv-bg p,.hv-bg .elementor-heading-title,.hv-bg .elementor-widget-text-editor{color:#fff!important}
 @media (max-width:767px){.hv-bg .elementor-element-873688f{display:none}}
@@ -140,10 +146,14 @@ body .wp-site-blocks .is-style-overlay-dark :is(h1,h2,h3,h4,h5,h6,p,li,blockquot
 <link rel="https://api.w.org/" href="https://bmusproxy.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://bmusproxy.com/wp-json/wp/v2/pages/6" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://bmusproxy.com/xmlrpc.php?rsd" />
 
 <link rel='shortlink' href='https://bmusproxy.com/' />
-<meta name="generator" content="Site Kit by Google 1.191.0" /><!-- Google tag (gtag.js) -->
-
-
-<!-- GA4 BM USA PROXY, added 2026-09-09 -->
+<meta name="generator" content="Site Kit by Google 1.191.0" /><!-- Google tag (gtag.js) -->
+
+
+
+
+
+<!-- GA4 BM USA PROXY, added 2026-09-09 -->
+
 
 <meta name="generator" content="Elementor 4.3.6; features: e_font_icon_svg, additional_custom_breakpoints; settings: css_print_method-external, google_font-enabled, font_display-swap">
 			<style>
@@ -164,10 +174,14 @@ body .wp-site-blocks .is-style-overlay-dark :is(h1,h2,h3,h4,h5,h6,p,li,blockquot
 					}
 				}
 			</style>
-			<!-- Microsoft Clarity: записи и тепловые карты (2026-10-16) -->
-<meta name="saashub-verification" content="59jfywr4fcln" />
-<meta name="msvalidate.01" content="924401A8E8FA3DA004ABD22A2BECB2E1" />
-<meta name="ahrefs-site-verification" content="cd448d3daee928f96c96c1c77b6930443ca71d9df33ba11185eb964a1da17765">
+			<!-- Microsoft Clarity: записи и тепловые карты (2026-10-16) -->
+
+<meta name="saashub-verification" content="59jfywr4fcln" />
+
+<meta name="msvalidate.01" content="924401A8E8FA3DA004ABD22A2BECB2E1" />
+
+<meta name="ahrefs-site-verification" content="cd448d3daee928f96c96c1c77b6930443ca71d9df33ba11185eb964a1da17765">
+
 <meta name="trustpilot-one-time-domain-verification-id" content="56de26c5-903c-40a3-90f0-b75876b9c702"/><link rel="icon" href="https://bmusproxy.com/wp-content/uploads/2025/11/cropped-123-32x32.png" sizes="32x32" />
 <link rel="icon" href="https://bmusproxy.com/wp-content/uploads/2025/11/cropped-123-192x192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="https://bmusproxy.com/wp-content/uploads/2025/11/cropped-123-180x180.png" />
@@ -1648,7 +1662,8 @@ Thanks.</div>
 					} );
 				} )();
 			</script>
-			<!-- BM USA PROXY - uchet perehodov v Telegram (D1). Nichego ne risuet. Otkat: udalit/otklyuchit snippet. -->
+			<!-- BM USA PROXY - uchet perehodov v Telegram (D1). Nichego ne risuet. Otkat: udalit/otklyuchit snippet. -->
+
 <script id="wp-hooks-js" src="https://bmusproxy.com/wp-includes/js/dist/hooks.min.js?ver=f0f188028580e8dc1255"></script>
 <script id="wp-i18n-js" src="https://bmusproxy.com/wp-includes/js/dist/i18n.min.js?ver=1dfe7db3940c23ea9216"></script>
 <script id="wp-i18n-js-after">
@@ -1731,7 +1746,7 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
 		<script src='https://img1.wsimg.com/traffic-assets/js/tccl-tti.min.js' onload="window.tti.calculateTTI()"></script>
 		<script>
 (function(){
-  var q = new URLSearchParams(location.search), v = +(q.get("v") || 1), m = q.get("m") || (v >= 4 ? "bg" : "img");
+  var q = new URLSearchParams(location.search), v = +(q.get("v") || 1), m = q.get("m") || (v >= 4 && v <= 6 ? "bg" : "img");
   var base = "https://a1exxx.github.io/bmusproxy-ru/hero-video-variants/";
   var phone = matchMedia("(max-width: 767px)").matches;
   function mk(cls){
@@ -1746,8 +1761,28 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     e.addEventListener("canplay", go); document.addEventListener("click", go, {once:true}); document.addEventListener("touchstart", go, {once:true});
     return e;
   }
+  var YT = "Nc3FVHvQJY8";
+  function ytSrc(auto){ return "https://www.youtube-nocookie.com/embed/" + YT + (auto ? "?autoplay=1&mute=1&loop=1&playlist=" + YT + "&controls=0&playsinline=1&rel=0&modestbranding=1" : "?autoplay=1&playsinline=1&rel=0"); }
+  function frame(auto){ return '<iframe src="' + ytSrc(auto) + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="Speed test"></iframe>'; }
+  function yt(cls){
+    var w = document.createElement("div"); w.className = cls + " hv-yt";
+    if (m === "click") {
+      w.innerHTML = '<img src="https://bmusproxy.com/wp-content/uploads/2025/11/video.png" alt="Speed test video"><button type="button" class="hv-play" aria-label="Play">&#9654;</button>';
+      w.addEventListener("click", function(){ w.innerHTML = frame(false); }, {once:true});
+    } else { w.innerHTML = frame(true); }
+    if (cls === "hv-back") {
+      var fit = function(){ var f = w.querySelector("iframe"); if (!f) return; var W = w.clientWidth, H = w.clientHeight; if (W / H > 16/9) { f.style.width = W + "px"; f.style.height = (W * 9 / 16) + "px"; } else { f.style.height = H + "px"; f.style.width = (H * 16 / 9) + "px"; } };
+      setTimeout(fit, 0); addEventListener("resize", fit);
+    }
+    return w;
+  }
   function run(){
-    if (v > 0) {
+    if (v === 7) {
+      var hero7 = document.querySelector(".elementor-element-c371ec2");
+      var img7 = hero7 && hero7.querySelector(".elementor-element-873688f img");
+      if (m === "bg" && hero7) { hero7.classList.add("hv-bg"); hero7.insertBefore(yt("hv-back"), hero7.firstChild); }
+      else if (img7) { img7.replaceWith(yt("hv-img")); }
+    } else if (v > 0) {
       var hero = document.querySelector(".elementor-element-c371ec2");
       var img = hero && hero.querySelector(".elementor-element-873688f img");
       if (m === "bg" && hero) { hero.classList.add("hv-bg"); hero.insertBefore(mk("hv-back"), hero.firstChild); }
@@ -1755,9 +1790,11 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
     }
     var bar = document.createElement("div"); bar.id = "hvbar";
     var h = '<span>Вариант</span>';
-    for (var i = 0; i <= 6; i++) h += '<a href="?v=' + i + '&m=' + m + '"' + (i === v ? ' class="on"' : '') + '>' + (i ? i : "сейчас") + '</a>';
+    var names = ["сейчас", "1", "2", "3", "4", "5", "6", "Скорость"];
+    for (var i = 0; i <= 7; i++) { var mm = i === 7 ? "img" : (i >= 4 ? "bg" : "img"); h += '<a href="?v=' + i + '&m=' + mm + '"' + (i === v ? ' class="on"' : '') + '>' + names[i] + '</a>'; }
     h += '<span>|</span><a href="?v=' + v + '&m=img"' + (m === "img" ? ' class="on"' : '') + '>вместо картинки</a>';
     h += '<a href="?v=' + v + '&m=bg"' + (m === "bg" ? ' class="on"' : '') + '>фоном</a>';
+    if (v === 7) h += '<a href="?v=7&m=click"' + (m === "click" ? ' class="on"' : '') + '>с кнопкой ▶</a>';
     bar.innerHTML = h;
     bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = location.pathname + a.getAttribute("href"); } }, true);
     document.body.appendChild(bar);
