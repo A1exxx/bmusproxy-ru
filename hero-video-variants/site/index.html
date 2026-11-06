@@ -66,6 +66,14 @@ body.hv-shell{margin:0;background:#dfe7ef;min-height:100vh}
 #hvstage.hv-phone iframe{width:375px;height:100%;border:0;display:block}
 #hvstage.hv-pc .hv-dev{overflow:hidden;border:1px solid #b9c7d6;border-radius:10px;background:#fff;box-shadow:0 20px 50px rgba(0,0,0,.2)}
 #hvstage.hv-pc iframe{width:1366px;height:820px;border:0;transform-origin:0 0;display:block}
+#hvtabs{display:flex!important;flex-wrap:nowrap;align-items:center;gap:8px;padding:6px 10px!important;font:600 13px/1 Roboto,system-ui,sans-serif!important}
+#hvtabs label{display:flex;align-items:center;gap:6px;color:#9cc6e6;min-width:0;flex:1 1 auto}
+#hvtabs select{min-width:0;max-width:100%;flex:1;font:600 13px Roboto,system-ui,sans-serif;color:#0e2f4f;background:#fff;border:0;border-radius:8px;padding:7px 8px}
+#hvtabs .hv-dv{display:flex;gap:4px;flex:none}
+#hvtabs .hv-dv a{padding:6px 9px!important;font-size:16px;line-height:1;border-radius:8px;background:rgba(255,255,255,.14)}
+#hvtabs .hv-dv a.on{background:#2fa36b}
+@media (min-width:768px){#hvtabs label{flex:0 1 auto}#hvtabs select{min-width:220px}}
+@media (max-width:767px){#hvtabs label{font-size:0;gap:0}#hvtabs select{font-size:12px;padding:7px 4px}}
 </style>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -1859,17 +1867,18 @@ var e="script#wp-emoji-settings",t=document.querySelector(e);if(!(t instanceof H
   }
   function bar(){
     var bar = document.createElement("div"); bar.id = "hvtabs";
-    var h = '<div class="hv-t">Какое видео:</div><div class="hv-row">';
-    for (var k = 1; k <= 7; k++) h += '<a href="' + url(k, l, d) + '"' + (k === v ? ' class="on"' : '') + '>' + NAMES[k] + '</a>';
-    h += '<a href="' + url(0, l, d) + '"' + (v === 0 ? ' class="on"' : '') + '>' + NAMES[0] + '</a></div>';
-    h += '<div class="hv-t">Как расположить:</div><div class="hv-row">';
-    LAYOUTS.forEach(function(x){ h += '<a href="' + url(v, x[0], d) + '"' + (x[0] === l ? ' class="on lay"' : ' class="lay"') + '>' + x[1] + '</a>'; });
-    h += '</div><div class="hv-t">Смотреть как:</div><div class="hv-row">';
     var cur = d === "phone" || d === "pc" ? d : (phone ? "phone" : "pc");
-    h += '<a class="dev' + (cur === "pc" ? ' on' : '') + '" href="' + url(v, l, "pc") + '">💻 С компьютера</a>';
-    h += '<a class="dev' + (cur === "phone" ? ' on' : '') + '" href="' + url(v, l, "phone") + '">📱 С телефона</a>';
-    h += '<a class="all" href="' + base + '">Все ролики списком</a></div>';
+    var h = '<label>Видео<select id="hv-v">';
+    for (var k = 1; k <= 7; k++) h += '<option value="' + k + '"' + (k === v ? ' selected' : '') + '>' + NAMES[k] + '</option>';
+    h += '<option value="0"' + (v === 0 ? ' selected' : '') + '>' + NAMES[0] + '</option></select></label>';
+    h += '<label>Вид<select id="hv-l">';
+    LAYOUTS.forEach(function(x){ h += '<option value="' + x[0] + '"' + (x[0] === l ? ' selected' : '') + '>' + x[1] + '</option>'; });
+    h += '</select></label>';
+    h += '<span class="hv-dv"><a data-d="pc" class="' + (cur === "pc" ? 'on' : '') + '" href="' + url(v, l, "pc") + '" title="С компьютера">💻</a><a data-d="phone" class="' + (cur === "phone" ? 'on' : '') + '" href="' + url(v, l, "phone") + '" title="С телефона">📱</a></span>';
     bar.innerHTML = h;
+    var go = function(){ location.href = url(bar.querySelector("#hv-v").value, bar.querySelector("#hv-l").value, d); };
+    bar.querySelector("#hv-v").addEventListener("change", go);
+    bar.querySelector("#hv-l").addEventListener("change", go);
     bar.addEventListener("click", function(e){ var a = e.target.closest("a"); if (a) { e.preventDefault(); e.stopPropagation(); location.href = a.href; } }, true);
     return bar;
   }
